@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ja One Connections Ltd | Your Gateway to Authentic Jamaica</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #006747;
+            --secondary: #FFB800;
+            --dark: #1a1a1a;
+            --light: #f8f9fa;
+            --accent: #00A878;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 103, 71, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(0, 103, 71, 1);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,103,71,0.6));
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 1;
+            padding: 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--secondary);
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255,184,0,0.3);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255,184,0,0.5);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Featured Packages */
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .package-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .package-img {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .package-img::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="white" opacity="0.1"/><circle cx="80" cy="40" r="3" fill="white" opacity="0.1"/><circle cx="40" cy="70" r="2.5" fill="white" opacity="0.1"/><circle cx="70" cy="80" r="2" fill="white" opacity="0.1"/></svg>');
+        }
+
+        .package-content {
+            padding: 2rem;
+        }
+
+        .package-content h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .package-content p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .package-price {
+            font-size: 1.8rem;
+            color: var(--accent);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .package-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .package-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            color: #555;
+        }
+
+        .package-features li:before {
+            content: "✓ ";
+            color: var(--accent);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Booking Section */
+        .booking-container {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 20px;
+            padding: 3rem;
+            color: white;
+        }
+
+        .booking-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            padding: 1rem 2rem;
+            background: var(--secondary);
+            color: var(--dark);
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            grid-column: 1 / -1;
+            max-width: 300px;
+            justify-self: center;
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(255,184,0,0.4);
+        }
+
+        /* Blog Section */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-img {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #FFB800, #FF8C00);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-meta {
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-content h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .read-more {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .read-more:hover {
+            color: var(--primary);
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background: var(--light);
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 2rem auto 0;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 50px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            padding: 1rem 2rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            background: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 5%;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--secondary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #999;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+            }
+
+            .nav-links.active {
+                transform: translateX(0);
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .packages-grid,
+            .services-grid,
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            section {
+                padding: 3rem 5%;
+            }
+        }
+
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 999;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Ja<span>One</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#packages">Packages</a></li>
+                <li><a href="#booking">Book Now</a></li>
+                <li><a href="#blog">Travel Tips</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Discover Authentic Jamaica</h1>
+            <p>Your Gateway to Unforgettable Caribbean Adventures</p>
+            <a href="#booking" class="cta-btn">Start Your Journey</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="section-header">
+            <h2>Our Premium Services</h2>
+            <p>Everything you need for the perfect Jamaican experience, all in one place</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🗺️</div>
+                <h3>Guided Tours</h3>
+                <p>Experience Jamaica's culture, adventure spots, and stunning coastlines with expert local guides</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🚗</div>
+                <h3>Transportation</h3>
+                <p>Reliable airport pickups, luxury shuttles, and private transport services across the island</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏖️</div>
+                <h3>Accommodations</h3>
+                <p>Curated selection of hotels, villas, and authentic guesthouses for every budget</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💍</div>
+                <h3>Event Management</h3>
+                <p>Weddings, conferences, and festivals planned to perfection in paradise</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">✨</div>
+                <h3>Custom Bundles</h3>
+                <p>Personalized all-inclusive packages tailored to your travel dreams</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🌿</div>
+                <h3>Eco-Tourism</h3>
+                <p>Sustainable travel experiences that support local communities and preserve nature</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Packages -->
+    <section id="packages" style="background: var(--light);">
+        <div class="section-header">
+            <h2>Featured Packages</h2>
+            <p>Handpicked experiences that showcase the best of Jamaica</p>
+        </div>
+        <div class="packages-grid">
+            <div class="package-card">
+                <div class="package-img">🏝️</div>
+                <div class="package-content">
+                    <h3>Island Paradise Escape</h3>
+                    <div class="package-price">$1,299 <span style="font-size: 1rem; color: #999;">/ person</span></div>
+                    <p>5 days of pure Caribbean bliss with accommodation, tours, and transport included</p>
+                    <ul class="package-features">
+                        <li>Luxury beachfront accommodation</li>
+                        <li>Airport transfers included</li>
+                        <li>Dunn's River Falls tour</li>
+                        <li>Sunset catamaran cruise</li>
+                        <li>Daily breakfast & 2 dinners</li>
+                    </ul>
+                    <a href="#booking" class="cta-btn">Book Now</a>
+                </div>
+            </div>
+            <div class="package-card">
+                <div class="package-img">🎉</div>
+                <div class="package-content">
+                    <h3>Cultural Adventure</h3>
+                    <div class="package-price">$899 <span style="font-size: 1rem; color: #999;">/ person</span></div>
+                    <p>Immerse yourself in authentic Jamaican culture, music, and cuisine</p>
+                    <ul class="package-features">
+                        <li>Bob Marley Museum visit</li>
+                        <li>Local cooking class</li>
+                        <li>Reggae night experience</li>
+                        <li>Craft market tour</li>
+                        <li>Traditional accommodation</li>
+                    </ul>
+                    <a href="#booking" class="cta-btn">Book Now</a>
+                </div>
+            </div>
+            <div class="package-card">
+                <div class="package-img">🌄</div>
+                <div class="package-content">
+                    <h3>Thrill Seeker Special</h3>
+                    <div class="package-price">$1,499 <span style="font-size: 1rem; color: #999;">/ person</span></div>
+                    <p>Action-packed adventures for those who love adrenaline and exploration</p>
+                    <ul class="package-features">
+                        <li>Zip-lining through rainforest</li>
+                        <li>ATV mountain tour</li>
+                        <li>Cliff diving excursion</li>
+                        <li>White water rafting</li>
+                        <li>All safety equipment included</li>
+                    </ul>
+                    <a href="#booking" class="cta-btn">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking">
+        <div class="section-header">
+            <h2>Plan Your Perfect Trip</h2>
+            <p>Let us create a customized experience just for you</p>
+        </div>
+        <div class="booking-container">
+            <form class="booking-form" id="bookingForm">
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" required placeholder="John Smith">
+                </div>
+                <div class="form-group">
+                    <label>Email *</label>
+                    <input type="email" required placeholder="john@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number *</label>
+                    <input type="tel" required placeholder="+1 234 567 8900">
+                </div>
+                <div class="form-group">
+                    <label>Travel Dates *</label>
+                    <input type="date" required>
+                </div>
+                <div class="form-group">
+                    <label>Number of Travelers *</label>
+                    <select required>
+                        <option value="">Select...</option>
+                        <option>1 Person</option>
+                        <option>2 People</option>
+                        <option>3-4 People</option>
+                        <option>5-7 People</option>
+                        <option>8+ People</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Service Interest *</label>
+                    <select required>
+                        <option value="">Select...</option>
+                        <option>Tours & Excursions</option>
+                        <option>Transportation Only</option>
+                        <option>Accommodation Packages</option>
+                        <option>Event Management</option>
+                        <option>Custom Bundle</option>
+                        <option>All Services</option>
+                    </select>
+                </div>
+                <div class="form-group" style="grid-column: 1 / -1;">
+                    <label>Special Requests or Questions</label>
+                    <textarea placeholder="Tell us about your dream vacation..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Get Your Quote</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" style="background: var(--light);">
+        <div class="section-header">
+            <h2>Travel Tips & Insights</h2>
+            <p>Discover insider knowledge to make the most of your Jamaican adventure</p>
+        </div>
+        <div class="blog-grid">
+            <div class="blog-card">
+                <div class="blog-img">📸</div>
+                <div class="blog-content">
+                    <div class="blog-meta">October 1, 2025 • Travel Guide</div>
+                    <h3>10 Hidden Gems in Jamaica You Must Visit</h3>
+                    <p>Explore lesser-known treasures beyond the typical tourist spots for an authentic experience...</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </div>
+            <div class="blog-card">
+                <div class="blog-img">🍽️</div>
+                <div class="blog-content">
+                    <div class="blog-meta">September 28, 2025 • Food & Culture</div>
+                    <h3>The Ultimate Guide to Jamaican Cuisine</h3>
+                    <p>From jerk chicken to ackee and saltfish, discover the flavors that define Jamaica...</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </div>
+            <div class="blog-card">
+                <div class="blog-img">🌊</div>
+                <div class="blog-content">
+                    <div class="blog-meta">September 25, 2025 • Adventure</div>
+                    <h3>Best Beaches for Every Type of Traveler</h3>
+                    <p>Whether you seek calm waters or surfing waves, find your perfect beach paradise...</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <h2 style="color: var(--primary); margin-bottom: 1rem;">Stay Connected</h2>
+        <p>Subscribe for exclusive deals, travel tips, and Caribbean inspiration</p>
+        <form class="newsletter-form" id="newsletterForm">
+            <input type="email" placeholder="Enter your email address" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </section>
+
+    <!-- Contact & Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Ja One Connections Ltd</h3>
+                <p>Your trusted partner for authentic Jamaican experiences since 2020.</p>
+                <div class="social-links">
+                    <a href="#" title="Facebook">f</a>
+                    <a href="#" title="Instagram">📷</a>
+                    <a href="#" title="Twitter">🐦</a>
+                    <a href="#" title="YouTube">▶</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#services">Our Services</a></li>
+                    <li><a href="#packages">Travel Packages</a></li>
+                    <li><a href="#booking">Book Now</a></li>
+                    <li><a href="#blog">Travel Blog</a></li>
+                    <li><a href="#">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Guided Tours</a></li>
+                    <li><a href="#">Transportation</a></li>
+                    <li><a href="#">Accommodations</a></li>
+                    <li><a href="#">Event Planning</a></li>
+                    <li><a href="#">Custom Packages</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li>📧 info@jaoneconnections.com</li>
+                    <li>📱 +1-876-XXX-XXXX</li>
+                    <li>📍 Granville, Saint James Parish, JM</li>
+                    <li>🕐 Mon-Sat: 8AM - 8PM EST</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Ja One Connections Ltd. All rights reserved. | <a href="#" style="color: var(--secondary);">Privacy Policy</a> | <a href="#" style="color: var(--secondary);">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <div class="whatsapp-float" title="Chat with us on WhatsApp">
+        💬
+    </div>
+
+    <script>
+        // Mobile Navigation Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.
