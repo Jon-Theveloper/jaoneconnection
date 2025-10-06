@@ -12,11 +12,11 @@
         }
 
         :root {
-            --primary: #006747;
-            --secondary: #FFB800;
+            --primary: #012C18;
+            --secondary: #FEC202;
             --dark: #1a1a1a;
             --light: #f8f9fa;
-            --accent: #00A878;
+            --accent: #012C18;
         }
 
         body {
@@ -31,7 +31,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(0, 103, 71, 0.95);
+            background: rgba(1, 44, 24, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
             padding: 1rem 5%;
@@ -39,7 +39,7 @@
         }
 
         nav.scrolled {
-            background: rgba(0, 103, 71, 1);
+            background: rgba(1, 44, 24, 1);
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
         }
 
@@ -68,6 +68,12 @@
             list-style: none;
         }
 
+        .nav-links li {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
         .nav-links a {
             color: white;
             text-decoration: none;
@@ -86,6 +92,47 @@
             color: white;
             font-size: 1.5rem;
             cursor: pointer;
+            width: 30px;
+            height: 30px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: white;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-toggle span:nth-child(1) {
+            top: 5px;
+        }
+
+        .mobile-toggle span:nth-child(2) {
+            top: 13px;
+        }
+
+        .mobile-toggle span:nth-child(3) {
+            top: 21px;
+        }
+
+        .mobile-toggle.active span:nth-child(1) {
+            top: 13px;
+            transform: translateX(-50%) rotate(45deg);
+        }
+
+        .mobile-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-toggle.active span:nth-child(3) {
+            top: 13px;
+            transform: translateX(-50%) rotate(-45deg);
         }
 
         /* Hero Section */
@@ -114,7 +161,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,103,71,0.6));
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(1, 44, 24, 0.7));
         }
 
         .hero-content {
@@ -212,6 +259,11 @@
             font-size: 3rem;
             position: relative;
             overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .package-card:hover .package-img {
+            transform: scale(1.05);
         }
 
         .package-img::before {
@@ -222,6 +274,17 @@
             right: 0;
             bottom: 0;
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="white" opacity="0.1"/><circle cx="80" cy="40" r="3" fill="white" opacity="0.1"/><circle cx="40" cy="70" r="2.5" fill="white" opacity="0.1"/><circle cx="70" cy="80" r="2" fill="white" opacity="0.1"/></svg>');
+        }
+
+        .package-img::after {
+            content: attr(data-emoji);
+            font-size: 3rem;
+            transition: transform 0.5s ease, filter 0.3s ease;
+        }
+
+        .package-card:hover .package-img::after {
+            transform: scale(1.2) rotate(10deg);
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
         }
 
         .package-content {
@@ -289,6 +352,14 @@
         .service-icon {
             font-size: 3rem;
             margin-bottom: 1rem;
+            display: inline-block;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            filter: grayscale(0%);
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.2) rotate(5deg);
+            filter: drop-shadow(0 5px 15px rgba(254, 194, 2, 0.5));
         }
 
         .service-card h3 {
@@ -379,11 +450,23 @@
         .blog-img {
             width: 100%;
             height: 200px;
-            background: linear-gradient(135deg, #FFB800, #FF8C00);
+            background: linear-gradient(135deg, #FEC202, #FF8C00);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 3rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .blog-img::after {
+            content: attr(data-emoji);
+            font-size: 3rem;
+            transition: transform 0.4s ease;
+        }
+
+        .blog-card:hover .blog-img::after {
+            transform: scale(1.15) rotate(-5deg);
         }
 
         .blog-content {
@@ -528,8 +611,81 @@
             }
         }
 
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
         .fade-in {
             animation: fadeInUp 0.6s ease;
+        }
+
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-slide-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .scroll-slide-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scroll-slide-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .scroll-slide-right.visible {
+            opacity: 1;
+            transform: translateX(0);
         }
 
         /* Responsive */
@@ -617,7 +773,11 @@
                 <li><a href="#blog">Travel Tips</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <button class="mobile-toggle" id="mobileToggle">☰</button>
+            <button class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
@@ -638,32 +798,32 @@
             <p>Everything you need for the perfect Jamaican experience, all in one place</p>
         </div>
         <div class="services-grid">
-            <div class="service-card">
+            <div class="service-card scroll-animate">
                 <div class="service-icon">🗺️</div>
                 <h3>Guided Tours</h3>
                 <p>Experience Jamaica's culture, adventure spots, and stunning coastlines with expert local guides</p>
             </div>
-            <div class="service-card">
+            <div class="service-card scroll-animate">
                 <div class="service-icon">🚗</div>
                 <h3>Transportation</h3>
                 <p>Reliable airport pickups, luxury shuttles, and private transport services across the island</p>
             </div>
-            <div class="service-card">
+            <div class="service-card scroll-animate">
                 <div class="service-icon">🏖️</div>
                 <h3>Accommodations</h3>
                 <p>Curated selection of hotels, villas, and authentic guesthouses for every budget</p>
             </div>
-            <div class="service-card">
+            <div class="service-card scroll-animate">
                 <div class="service-icon">💍</div>
                 <h3>Event Management</h3>
                 <p>Weddings, conferences, and festivals planned to perfection in paradise</p>
             </div>
-            <div class="service-card">
+            <div class="service-card scroll-animate">
                 <div class="service-icon">✨</div>
                 <h3>Custom Bundles</h3>
                 <p>Personalized all-inclusive packages tailored to your travel dreams</p>
             </div>
-            <div class="service-card">
+            <div class="service-card scroll-animate">
                 <div class="service-icon">🌿</div>
                 <h3>Eco-Tourism</h3>
                 <p>Sustainable travel experiences that support local communities and preserve nature</p>
@@ -678,7 +838,7 @@
             <p>Handpicked experiences that showcase the best of Jamaica</p>
         </div>
         <div class="packages-grid">
-            <div class="package-card">
+            <div class="package-card scroll-slide-left">
                 <div class="package-img">🏝️</div>
                 <div class="package-content">
                     <h3>Island Paradise Escape</h3>
@@ -694,7 +854,7 @@
                     <a href="#booking" class="cta-btn">Book Now</a>
                 </div>
             </div>
-            <div class="package-card">
+            <div class="package-card scroll-animate">
                 <div class="package-img">🎉</div>
                 <div class="package-content">
                     <h3>Cultural Adventure</h3>
@@ -710,7 +870,7 @@
                     <a href="#booking" class="cta-btn">Book Now</a>
                 </div>
             </div>
-            <div class="package-card">
+            <div class="package-card scroll-slide-right">
                 <div class="package-img">🌄</div>
                 <div class="package-content">
                     <h3>Thrill Seeker Special</h3>
@@ -759,9 +919,9 @@
                         <option value="">Select...</option>
                         <option>1 Person</option>
                         <option>2 People</option>
-                        <option>3-4 People</option>
-                        <option>5-7 People</option>
-                        <option>8+ People</option>
+                        <option>3-5 People</option>
+                        <option>6-9 People</option>
+                        <option>10+ People</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -792,7 +952,7 @@
             <p>Discover insider knowledge to make the most of your Jamaican adventure</p>
         </div>
         <div class="blog-grid">
-            <div class="blog-card">
+            <div class="blog-card scroll-animate">
                 <div class="blog-img">📸</div>
                 <div class="blog-content">
                     <div class="blog-meta">October 1, 2025 • Travel Guide</div>
@@ -801,7 +961,7 @@
                     <a href="#" class="read-more">Read More →</a>
                 </div>
             </div>
-            <div class="blog-card">
+            <div class="blog-card scroll-animate">
                 <div class="blog-img">🍽️</div>
                 <div class="blog-content">
                     <div class="blog-meta">September 28, 2025 • Food & Culture</div>
@@ -810,7 +970,7 @@
                     <a href="#" class="read-more">Read More →</a>
                 </div>
             </div>
-            <div class="blog-card">
+            <div class="blog-card scroll-animate">
                 <div class="blog-img">🌊</div>
                 <div class="blog-content">
                     <div class="blog-meta">September 25, 2025 • Adventure</div>
@@ -836,8 +996,8 @@
     <footer id="contact">
         <div class="footer-content">
             <div class="footer-section">
-                <h3>Ja One Connections Ltd</h3>
-                <p>Your trusted partner for authentic Jamaican experiences since 2020.</p>
+                <h3>Ja One Connections</h3>
+                <p>Your trusted partner for authentic Jamaican experiences since 2025.</p>
                 <div class="social-links">
                     <a href="#" title="Facebook">f</a>
                     <a href="#" title="Instagram">📷</a>
@@ -858,11 +1018,11 @@
             <div class="footer-section">
                 <h3>Services</h3>
                 <ul>
-                    <li><a href="#">Guided Tours</a></li>
-                    <li><a href="#">Transportation</a></li>
-                    <li><a href="#">Accommodations</a></li>
-                    <li><a href="#">Event Planning</a></li>
-                    <li><a href="#">Custom Packages</a></li>
+                    <li><a href="#booking">Guided Tours</a></li>
+                    <li><a href="#booking">Transportation</a></li>
+                    <li><a href="#booking">Accommodations</a></li>
+                    <li><a href="#booking">Event Planning</a></li>
+                    <li><a href="#booking">Custom Packages</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -870,7 +1030,7 @@
                 <ul>
                     <li>📧 info@jaoneconnections.com</li>
                     <li>📱 +1-876-XXX-XXXX</li>
-                    <li>📍 Granville, Saint James Parish, JM</li>
+                    <li>📍 Montego Bay, Saint James Parish, JM</li>
                     <li>🕐 Mon-Sat: 8AM - 8PM EST</li>
                 </ul>
             </div>
@@ -892,9 +1052,152 @@
         
         mobileToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
+            mobileToggle.classList.toggle('active');
+            
+            // Sequential dropdown animation
+            if (navLinks.classList.contains('active')) {
+                const links = navLinks.querySelectorAll('li');
+                links.forEach((link, index) => {
+                    link.style.opacity = '0';
+                    link.style.transform = 'translateY(-20px)';
+                    setTimeout(() => {
+                        link.style.opacity = '1';
+                        link.style.transform = 'translateY(0)';
+                    }, index * 100);
+                });
+            }
         });
 
         // Close mobile menu when link is clicked
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
-                navLinks.classList.
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                    scrollObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.scroll-animate, .scroll-slide-left, .scroll-slide-right').forEach(el => {
+            scrollObserver.observe(el);
+        });
+
+        // Form submissions
+        document.getElementById('bookingForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your booking request! We will contact you within 24 hours to confirm your personalized Jamaica experience.');
+            e.target.reset();
+        });
+
+        document.getElementById('newsletterForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Success! You\'re now subscribed to exclusive Caribbean travel deals and inspiration.');
+            e.target.reset();
+        });
+
+        // WhatsApp button functionality
+        document.querySelector('.whatsapp-float').addEventListener('click', () => {
+            window.open('https://wa.me/1876XXXXXXX?text=Hello! I\'m interested in planning a trip to Jamaica.', '_blank');
+        });
+
+        // Simulate video background with gradient animation
+        const hero = document.querySelector('.hero');
+        let hue = 0;
+        setInterval(() => {
+            hue = (hue + 0.5) % 360;
+            hero.style.background = `linear-gradient(135deg, 
+                hsl(${hue}, 70%, 40%), 
+                hsl(${(hue + 60) % 360}, 70%, 50%))`;
+        }, 100);
+
+        // Package card click to booking
+        document.querySelectorAll('.package-card .cta-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const packageName = e.target.closest('.package-card').querySelector('h3').textContent;
+                document.querySelector('#booking').scrollIntoView({ behavior: 'smooth' });
+                
+                // Auto-fill service interest after scroll
+                setTimeout(() => {
+                    const serviceSelect = document.querySelector('#booking select[required]:last-of-type');
+                    if (serviceSelect) {
+                        serviceSelect.value = 'Custom Bundle';
+                    }
+                }, 800);
+            });
+        });
+
+        // Dynamic counter animation for stats (optional enhancement)
+        function animateValue(element, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                element.textContent = Math.floor(progress * (end - start) + start);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Parallax effect for hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroContent = document.querySelector('.hero-content');
+            if (heroContent && scrolled < window.innerHeight) {
+                heroContent.style.transform = `translateY(${scrolled * 0.5}px)`;
+                heroContent.style.opacity = 1 - (scrolled / window.innerHeight);
+            }
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+    </html>
