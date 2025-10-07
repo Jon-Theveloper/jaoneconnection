@@ -1107,6 +1107,20 @@
         navLinks.classList.toggle('active');
     });
 
+    // Sequential dropdown animation
+            if (navLinks.classList.contains('active')) {
+                const links = navLinks.querySelectorAll('li');
+                links.forEach((link, index) => {
+                    link.style.opacity = '0';
+                    link.style.transform = 'translateY(-20px)';
+                    setTimeout(() => {
+                        link.style.opacity = '1';
+                        link.style.transform = 'translateY(0)';
+                    }, index * 100);
+                });
+            }
+        });
+        
     // Close menu when a nav link is clicked (useful for single page sites)
     navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
