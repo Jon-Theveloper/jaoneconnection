@@ -36,7 +36,6 @@
             z-index: 1000;
             padding: 1rem 5%;
             transition: all 0.3s ease;
-            overflow: hidden;
         }
 
         nav.scrolled {
@@ -150,7 +149,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            background: linear-gradient(135deg, #012C18, #0a5a3a);
         }
+
         .hero-carousel {
             position: absolute;
             top: 0;
@@ -181,7 +182,7 @@
         }
 
         .hero-slide:nth-child(2) {
-            background: url('carousel2.jpg');
+            background:  url('carousel2.jpg');
         }
 
         .hero-slide:nth-child(3) {
@@ -190,16 +191,6 @@
 
         .hero-slide:nth-child(4) {
             background: url('carousel4.jpg');
-        }
-        
-        .hero-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
         }
 
         .hero-overlay {
@@ -294,7 +285,9 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
 
-        .package-imga .package-imgb .package-imgc {
+        .package-imga,
+        .package-imgb,
+        .package-imgc {
             width: 100%;
             height: 250px;
             display: flex;
@@ -304,25 +297,34 @@
             font-size: 3rem;
             position: relative;
             transition: transform 0.3s ease;
-        }
-     
-       .package-imga{
-           background: url('pkg1.jpg'):
-       }
-
-        .package-imgb{
-           background: url('pkg2.jpg'):
+            background-size: cover;
+            background-position: center;
         }
 
-        .package-imgc{
-           background: url('pkg3.jpg'):
+        .package-imga {
+            background: linear-gradient(135deg, rgba(1, 44, 24, 0.6), rgba(254, 194, 2, 0.4)), 
+                        url('pkg1.jpg');
         }
-        
-        .package-card:hover .package-imga .package-imgb .package-imgc {
+
+        .package-imgb {
+            background: linear-gradient(135deg, rgba(254, 194, 2, 0.6), rgba(1, 44, 24, 0.4)), 
+                        url('pkg2.jpg');
+        }
+
+        .package-imgc {
+            background: linear-gradient(135deg, rgba(10, 90, 58, 0.7), rgba(254, 194, 2, 0.3)), 
+                        url('pkg3.jpg');
+        }
+
+        .package-card:hover .package-imga,
+        .package-card:hover .package-imgb,
+        .package-card:hover .package-imgc {
             transform: scale(1.05);
         }
 
-        .package-imga .package-imgb .package-imgc::before {
+        .package-imga::before,
+        .package-imgb::before,
+        .package-imgc::before {
             content: '';
             position: relative;
             top: 0;
@@ -331,13 +333,17 @@
             bottom: 0;
         }
 
-        .package-imga .package-imgb .package-imgc::after {
+        .package-imga::after,
+        .package-imgb::after,
+        .package-imgc::after {
             content: attr(data-emoji);
             font-size: 3rem;
             transition: transform 0.5s ease, filter 0.3s ease;
         }
 
-        .package-card:hover .package-imga .package-imgb .package-imgc::after {
+        .package-card:hover .package-imga::after,
+        .package-card:hover .package-imgb::after,
+        .package-card:hover .package-imgc::after {
             transform: scale(1.2) rotate(10deg);
             filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
         }
@@ -502,7 +508,9 @@
             transform: translateY(-5px);
         }
 
-        .blog-imga .blog-imgb .blog-imgc {
+        .blog-imga,
+        .blog-imgb,
+        .blog-imgc {
             width: 100%;
             height: 200px;
             display: flex;
@@ -510,25 +518,36 @@
             justify-content: center;
             font-size: 3rem;
             position: relative;
+            background-size: cover;
+            background-position: center;
         }
 
-        .blog-imga{
-            background: url('gem1.jpg');
-        }
-        .blog-imgb{
-            background: url('gem2.jpeg');
-        }
-        .blog-imgc{
-            background: url('gem3.png');
+        .blog-imga {
+            background: linear-gradient(135deg, rgba(1, 44, 24, 0.5), rgba(254, 194, 2, 0.5)), 
+                        url('gem1.jpg');
         }
 
-        .blog-imga .blog-imgb .blog-imgc::after {
+        .blog-imgb {
+            background: linear-gradient(135deg, rgba(254, 194, 2, 0.5), rgba(1, 44, 24, 0.5)), 
+                        url('gem2.jpeg');
+        }
+
+        .blog-imgc {
+            background: linear-gradient(135deg, rgba(10, 90, 58, 0.6), rgba(254, 194, 2, 0.4)), 
+                        url('gem3.png');
+        }
+
+        .blog-imga::after,
+        .blog-imgb::after,
+        .blog-imgc::after {
             content: attr(data-emoji);
             font-size: 3rem;
             transition: transform 0.4s ease;
         }
 
-        .blog-card:hover .blog-imga .blog-imgb .blog-imgc::after {
+        .blog-card:hover .blog-imga::after,
+        .blog-card:hover .blog-imgb::after,
+        .blog-card:hover .blog-imgc::after {
             transform: scale(1.15) rotate(-5deg);
         }
 
@@ -674,46 +693,6 @@
             }
         }
 
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-        }
-
         .fade-in {
             animation: fadeInUp 0.6s ease;
         }
@@ -827,7 +806,7 @@
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
-            <a href="#home" class="logo">Ja<span class="gold">One</span><span class="black">Connections</a>
+            <a href="#home" class="logo">Ja<span class="gold">One</span><span class="black">Connections</span></a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
@@ -965,7 +944,7 @@
             <p>Let us create a customized experience just for you</p>
         </div>
         <div class="booking-container">
-            <form class="booking-form" id="bookingForm" type="/submit" method="POST">
+            <form class="booking-form" id="bookingForm" action="/submit" method="POST">
                 <div class="form-group">
                     <label>Full Name *</label>
                     <input type="text" required placeholder="John Smith">
@@ -1069,7 +1048,7 @@
                 <p>Your trusted partner for authentic Jamaican experiences since 2025.</p>
                 <div class="social-links">
                     <a href="#" title="Instagram">
-                        <i class="fab fa-instagram"></I>
+                        <i class="fab fa-instagram"></i>
                     </a>
                     <a href="#" title="Twitter">
                        <i class="fab fa-twitter"></i>
@@ -1102,8 +1081,8 @@
             <div class="footer-section">
                 <h3>Contact Us</h3>
                 <ul>
-                    <li>📧 jaoneconnections@gmail.com</li>
-                    <li>📱 +1-876-XXX-XXXX</li>
+                    <a href="mailto:jaonesconnection@gmail.com">📧 jaonesconnections@gmail.com</a>
+                    <a href="tel:+1876363-0351">📱 +1-876-XXX-XXXX</a>
                     <li>📍 Montego Bay, Saint James Parish, JM</li>
                     <li>🕐 Mon-Sat: 8AM - 8PM EST</li>
                 </ul>
@@ -1120,7 +1099,7 @@
     </div>
 
     <script>
-// Mobile Navigation Toggle
+        // Mobile Navigation Toggle
         const mobileToggle = document.getElementById('mobileToggle');
         const navLinks = document.getElementById('navLinks');
         
@@ -1128,7 +1107,6 @@
             navLinks.classList.toggle('active');
             mobileToggle.classList.toggle('active');
             
-            // Sequential dropdown animation
             if (navLinks.classList.contains('active')) {
                 const links = navLinks.querySelectorAll('li');
                 links.forEach((link, index) => {
@@ -1137,7 +1115,7 @@
                     setTimeout(() => {
                         link.style.opacity = '1';
                         link.style.transform = 'translateY(0)';
-                    }, index * 1);
+                    }, index * 100);
                 });
             }
         });
@@ -1150,19 +1128,14 @@
             });
         });
 
-
         // Hero Carousel
         const slides = document.querySelectorAll('.hero-slide');
-        const dots = document.querySelectorAll('.carousel-dot');
         let currentSlide = 0;
         let carouselInterval;
 
         function showSlide(index) {
             slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
             slides[index].classList.add('active');
-            dots[index].classList.add('active');
             currentSlide = index;
         }
 
@@ -1173,10 +1146,6 @@
 
         function startCarousel() {
             carouselInterval = setInterval(nextSlide, 5000);
-        }
-
-        function stopCarousel() {
-            clearInterval(carouselInterval);
         }
 
         startCarousel();
@@ -1245,16 +1214,6 @@
             window.open('https://wa.me/1876XXXXXXX?text=Hello! I\'m interested in planning a trip to Jamaica.', '_blank');
         });
 
-        // Simulate video background with gradient animation
-        const hero = document.querySelector('.hero');
-        let hue = 0;
-        setInterval(() => {
-            hue = (hue + 0.5) % 360;
-            hero.style.background = `linear-gradient(135deg, 
-                hsl(${hue}, 70%, 40%), 
-                hsl(${(hue + 60) % 360}, 70%, 50%))`;
-        }, 100);
-
         // Package card click to booking
         document.querySelectorAll('.package-card .cta-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
@@ -1262,7 +1221,6 @@
                 const packageName = e.target.closest('.package-card').querySelector('h3').textContent;
                 document.querySelector('#booking').scrollIntoView({ behavior: 'smooth' });
                 
-                // Auto-fill service interest after scroll
                 setTimeout(() => {
                     const serviceSelect = document.querySelector('#booking select[required]:last-of-type');
                     if (serviceSelect) {
@@ -1271,20 +1229,6 @@
                 }, 800);
             });
         });
-
-        // Dynamic counter animation for stats (optional enhancement)
-        function animateValue(element, start, end, duration) {
-            let startTimestamp = null;
-            const step = (timestamp) => {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                element.textContent = Math.floor(progress * (end - start) + start);
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
-                }
-            };
-            window.requestAnimationFrame(step);
-        }
 
         // Parallax effect for hero
         window.addEventListener('scroll', () => {
