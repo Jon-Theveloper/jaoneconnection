@@ -10,6 +10,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            overflow:hidden
         }
 
         :root {
@@ -24,7 +25,6 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: var(--dark);
-            overflow: hidden;
         }
 
         /* Navigation */
@@ -168,7 +168,8 @@
             opacity: 0;
             transition: opacity 1.5s ease-in-out;
             background-size: cover;
-            background-position: center center no-repeat;
+            background-position: center center;
+            background-repeat: no-repeat;
         }
 
         .hero-slide.active {
