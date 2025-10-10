@@ -154,12 +154,11 @@
         }
 
         .hero-carousel {
-            position: relative;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            z-index: 0;       
+            height: 100%;       
         }
 
         .hero-slide {
@@ -271,6 +270,7 @@
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
+            overflow: hidden;
         }
 
         .package-card {
