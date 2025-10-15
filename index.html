@@ -29,11 +29,10 @@
         }
 
         nav {
-            position: fixed;
+            position: sticky;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(10px);
             z-index: 1000;
             border-bottom: 1px solid #e5e5e5;
         }
@@ -164,11 +163,12 @@
         .btn-secondary:hover {
             background: var(--secondary);
             color: white;
+            border-radius: 0px;
         }
 
         .hero-image {
             height: 500px;
-            border-radius: 1px;
+            border-radius: 2px;
             background: linear-gradient(135deg, rgba(0,159,107,0.9), rgba(0,122,82,0.7)),
                         url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800') center/cover;
             box-shadow: 2 30px 30px rgba(0,0,0,0.15);
@@ -302,7 +302,7 @@
         .booking-section {
             background: linear-gradient(135deg, rgba(0,159,107,0.9), rgba(0,122,82,0.7)),
                 
-                url ('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.dreamstime.com%2Fphotos-images%2Ftourism-jamaica.html&psig=AOvVaw3MXXadIm6VTJuc1Davwik3&ust=1760631782821000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCNDoyOjOppADFQAAAAAdAAAAABAN') center/cover;
+                url ('https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_400,q_75,w_600/v1/clients/jamaica/P3_52_b207efde-b858-472f-9800-f8065bb2574f.jpg') center/cover;
             color: white;
         }
 
@@ -349,9 +349,13 @@
         }
 
         footer {
-            background: var(--dark);
+            background: var(--primary);
             color: white;
             padding: 4rem 2rem;
+        }
+
+        .logo-img {
+            background: url('logo-img.jpg');
         }
 
         .footer-grid {
@@ -728,7 +732,7 @@
     <footer>
         <div class="footer-grid">
             <div>
-                <div id="logo-img"></div>
+                <div class="logo-img"></div>
                 <p style="color: #999; margin: 1rem 0;">Your trusted partner for authentic Jamaican travel experiences.</p>
             </div>
             <div>
