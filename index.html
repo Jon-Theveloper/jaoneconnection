@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ja One Connections Ltd | Your Gateway to Authentic Jamaica</title>
+    <title>Ja One Connections | Authentic Jamaica Travel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <style>
         * {
@@ -13,450 +13,297 @@
         }
 
         :root {
-            --primary: #012C18;
-            --secondary: #FEC202;
-            --dark: #1a1a1a;
-            --light: #f8f9fa;
-            --accent: #012C18;
+            --primary: #009F6B;
+            --primary-dark: #007A52;
+            --secondary: #FDB714;
+            --dark: #0a0a0a;
+            --gray-100: #f5f5f5;
+            --gray-600: #525252;
+            --gray-700: #404040;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.6;
             color: var(--dark);
         }
 
-        /* Navigation */
         nav {
-            position: sticky;
+            position: fixed;
             top: 0;
             width: 100%;
-            background: var(--dark);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
             z-index: 1000;
-            padding: 1rem 5%;
-            transition: all 0.3s ease;
-            border-bottom: 1px solid var(--primary);
-        }
-
-        nav.scrolled {
-            background: var(--dark);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            border-bottom: 1px solid #e5e5e5;
         }
 
         .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .particles {
-         position: absolute;
-         width: 100%;
-         height: 30px; /* adjust to match nav height */
-         top: 0;
-         left: 0;
-         z-index: 100;
-         background: black;
+            height: 72px;
         }
 
         .logo {
-            color: green;
-            font-size: 1.8rem;
-            font-weight: bold;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
             text-decoration: none;
         }
 
-        .gold {
-            color: var(--secondary);
-        }
-
-        .black {
-            color: #000;
-        }
+        .logo-accent { color: var(--primary); }
 
         .nav-links {
             display: flex;
             gap: 2rem;
             list-style: none;
-            z-index: 50;
-            background: var(--dark);
-        }
-
-        .nav-links li {
-            opacity: 1;
-            transform: translateY(0);
-            transition: opacity 0.3s ease, transform 0.3s ease;
+            align-items: center;
         }
 
         .nav-links a {
-            color: green;
+            color: var(--gray-700);
             text-decoration: none;
-            transition: color 0.3s;
             font-weight: 500;
+            transition: color 0.2s;
         }
 
-        .nav-links a:hover {
-            color: var(--secondary);
-        }
+        .nav-links a:hover { color: var(--dark); }
 
-        .mobile-toggle {
-            display: none;
-            background: none;
-            border: none;
+        .btn-primary {
+            background: var(--primary);
             color: white;
-            font-size: 1.5rem;
+            padding: 0.65rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            border: none;
             cursor: pointer;
-            width: 30px;
-            height: 30px;
-            position: relative;
-            transition: all 0.3s ease;
+            transition: all 0.2s;
         }
 
-        .mobile-toggle span {
-            display: block;
-            width: 25px;
-            height: 3px;
-            background: white;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            transition: all 0.3s ease;
-            z-index: 1000;
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
         }
 
-        .mobile-toggle span:nth-child(1) {
-            top: 5px;
-        }
-
-        .mobile-toggle span:nth-child(2) {
-            top: 13px;
-        }
-
-        .mobile-toggle span:nth-child(3) {
-            top: 21px;
-        }
-
-        .mobile-toggle.active span:nth-child(1) {
-            top: 13px;
-            transform: translateX(-50%) rotate(45deg);
-        }
-
-        .mobile-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .mobile-toggle.active span:nth-child(3) {
-            top: 13px;
-            transform: translateX(-50%) rotate(-45deg);
-        }
-
-        /* Hero Section */
         .hero {
-            margin-top: -20px;
-            height: 100vh;
-            position: relative;
-            overflow: hidden;
+            margin-top: 72px;
+            min-height: 90vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #012C18, #0a5a3a);
+            background: linear-gradient(135deg, #f6f8fa 0%, #ffffff 100%);
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
         }
 
-        .hero-carousel {
+        .hero::before {
+            content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;       
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0,159,107,0.08) 0%, transparent 70%);
+            animation: float 20s ease-in-out infinite;
         }
 
-        .hero-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1.5s ease-in-out;
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-30px, 30px); }
         }
 
-        .hero-slide.active {
-            opacity: 1;
+        .hero-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
         }
 
-        .hero-slide:nth-child(1) {
-            background-image: url('carousel1.jpeg');
-        }
-
-        .hero-slide:nth-child(2) {
-            background-image:  url('carousel2.jpeg');
-        }
-
-        .hero-slide:nth-child(3) {
-            background-image: url('carousel3.jpg');
-        }
-
-        .hero-slide:nth-child(4) {
-            background-image: url('carousel4.jpg');
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .hero-content {
-            text-align: center;
-            color: var(--secondary);
-            z-index: 1;
-            padding: 2rem;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero-content h1 {
+        .hero h1 {
             font-size: 4rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
         }
 
-        .hero-content p {
-            font-size: 1.5rem;
+        .hero-gradient {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--gray-600);
             margin-bottom: 2rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         }
 
-        .cta-btn {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: var(--primary);
-            color: var(--secondary);
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(255,184,0,0.3);
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
         }
 
-        .cta-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255,184,0,0.5);
-            background: var(--secondary);
+        .btn-secondary {
+            background: transparent;
             color: var(--primary);
+            padding: 0.65rem 1.5rem;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
         }
 
-        /* Section Styles */
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .hero-image {
+            height: 500px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(0,159,107,0.9), rgba(0,122,82,0.7)),
+                        url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800') center/cover;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
         section {
-            padding: 5rem 5%;
-            max-width: 1400px;
+            padding: 6rem 2rem;
+            max-width: 1280px;
             margin: 0 auto;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
         }
 
         .section-header h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
+            font-size: 2.75rem;
+            font-weight: 800;
             margin-bottom: 1rem;
         }
 
         .section-header p {
-            font-size: 1.1rem;
-            color: #666;
-            max-width: 700px;
-            margin: 0 auto;
+            font-size: 1.125rem;
+            color: var(--gray-600);
         }
 
-        /* Featured Packages */
-        .packages-grid {
+        .grid-3 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
-            margin-top: 3rem;
-            overflow: hidden;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #e5e5e5;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 30px rgba(0,159,107,0.12);
+            transform: translateY(-4px);
+        }
+
+        .icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .packages {
+            background: var(--gray-100);
         }
 
         .package-card {
             background: white;
-            border-radius: 15px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
+            border: 1px solid #e5e5e5;
         }
 
-        .package-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
-
-        .package-imga,
-        .package-imgb,
-        .package-imgc {
-            width: 100%;
-            height: 250px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
-            position: relative;
-            transition: transform 0.3s ease;
-            background-size: contain;
+        .package-image {
+            height: 240px;
+            background-size: cover;
             background-position: center;
-        }
-
-        .package-imga {
-            background-image: linear-gradient(135deg, rgba(1, 44, 24, 0.6), rgba(254, 194, 2, 0.4)), 
-                        url('pkg1.jpg');
-        }
-
-        .package-imgb {
-            background-image: linear-gradient(135deg, rgba(254, 194, 2, 0.6), rgba(1, 44, 24, 0.4)), 
-                        url('pkg2.jpg');
-        }
-
-        .package-imgc {
-            background-image: linear-gradient(135deg, rgba(10, 90, 58, 0.7), rgba(254, 194, 2, 0.3)), 
-                        url('pkg3.jpg');
-        }
-
-        .package-card:hover .package-imga,
-        .package-card:hover .package-imgb,
-        .package-card:hover .package-imgc {
-            transform: scale(1.05);
-        }
-
-        .package-imga::before,
-        .package-imgb::before,
-        .package-imgc::before {
-            content: '';
-            position: relative;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-        }
-
-        .package-imga::after,
-        .package-imgb::after,
-        .package-imgc::after {
-            content: attr(data-emoji);
-            font-size: 3rem;
-            transition: transform 0.5s ease, filter 0.3s ease;
-        }
-
-        .package-card:hover .package-imga::after,
-        .package-card:hover .package-imgb::after,
-        .package-card:hover .package-imgc::after {
-            transform: scale(1.2) rotate(10deg);
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
         }
 
         .package-content {
             padding: 2rem;
         }
 
-        .package-content h3 {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .package-content p {
-            color: #666;
-            margin-bottom: 1.5rem;
-        }
-
         .package-price {
-            font-size: 1.8rem;
-            color: var(--accent);
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
-        .package-features {
-            list-style: none;
-            margin-bottom: 1.5rem;
-        }
-
-        .package-features li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #eee;
-            color: #555;
-        }
-
-        .package-features li:before {
-            content: "✓ ";
-            color: var(--accent);
-            font-weight: bold;
-            margin-right: 0.5rem;
-        }
-
-        /* Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .service-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 5px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: all 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: inline-block;
-            transition: transform 0.3s ease, filter 0.3s ease;
-            filter: grayscale(0%);
-        }
-
-        .service-card:hover .service-icon {
-            transform: scale(1.2) rotate(5deg);
-            filter: drop-shadow(0 5px 15px rgba(254, 194, 2, 0.5));
-        }
-
-        .service-card h3 {
+            font-size: 2rem;
+            font-weight: 800;
             color: var(--primary);
             margin-bottom: 1rem;
         }
 
-        /* Booking Section */
-        .booking-container {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            border-radius: 5px;
-            padding: 3rem;
+        .package-price span {
+            font-size: 1rem;
+            color: var(--gray-600);
+            font-weight: 500;
+        }
+
+        .features {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .features li {
+            padding: 0.75rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .features li::before {
+            content: '✓';
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .booking-section {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
         }
 
-        .booking-form {
+        .form-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
-            margin-top: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .form-group {
@@ -465,229 +312,64 @@
         }
 
         .form-group label {
+            font-weight: 600;
             margin-bottom: 0.5rem;
-            font-weight: 500;
         }
 
         .form-group input,
         .form-group select,
         .form-group textarea {
-            padding: 1rem;
-            border-bottom: 1px solid var(--secondary);
-            border-radius: 2px;
-            font-size: 1rem;
+            padding: 0.875rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: white;
             font-family: inherit;
         }
 
-        .form-group textarea {
+        .form-group input::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+
+        .form-full {
+            grid-column: 1 / -1;
+        }
+
+        textarea {
             min-height: 120px;
             resize: vertical;
         }
 
-        .submit-btn {
-            padding: 1rem 2rem;
-            background: var(--secondary);
-            color: var(--dark);
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            grid-column: 1 / -1;
-            max-width: 300px;
-            justify-self: center;
-        }
-
-        .submit-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 20px rgba(255,184,0,0.4);
-        }
-
-        /* Blog Section */
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .blog-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: transform 0.3s;
-        }
-
-        .blog-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .blog-imga,
-        .blog-imgb,
-        .blog-imgc {
-            width: 100%;
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            position: relative;
-            background-size: contain;
-            background-position: center;
-        }
-
-        .blog-imga {
-            background-image: linear-gradient(135deg, rgba(1, 44, 24, 0.5), rgba(254, 194, 2, 0.5)), 
-                        url('gem1.jpg');
-        }
-
-        .blog-imgb {
-            background-image: linear-gradient(135deg, rgba(254, 194, 2, 0.5), rgba(1, 44, 24, 0.5)), 
-                        url('gem2.jpeg');
-        }
-
-        .blog-imgc {
-            background-image: linear-gradient(135deg, rgba(10, 90, 58, 0.6), rgba(254, 194, 2, 0.4)), 
-                        url('gem3.png');
-        }
-
-        .blog-imga::after,
-        .blog-imgb::after,
-        .blog-imgc::after {
-            content: attr(data-emoji);
-            font-size: 3rem;
-            transition: transform 0.4s ease;
-        }
-
-        .blog-card:hover .blog-imga::after,
-        .blog-card:hover .blog-imgb::after,
-        .blog-card:hover .blog-imgc::after {
-            transform: scale(1.15) rotate(-5deg);
-        }
-
-        .blog-content {
-            padding: 1.5rem;
-        }
-
-        .blog-meta {
-            color: #999;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .blog-content h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .read-more {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-
-        .read-more:hover {
-            color: var(--primary);
-        }
-
-        /* Newsletter */
-        .newsletter {
-            background: var(--light);
-            padding: 4rem 5%;
-            text-align: center;
-        }
-
-        .newsletter-form {
-            display: flex;
-            gap: 1rem;
-            max-width: 600px;
-            margin: 2rem auto 0;
-        }
-
-        .newsletter-form input {
-            flex: 1;
-            padding: 1rem;
-            border: 2px solid #ddd;
-            border-radius: 50px;
-            font-size: 1rem;
-        }
-
-        .newsletter-form button {
-            padding: 1rem 2rem;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .newsletter-form button:hover {
-            background: var(--accent);
-        }
-
-        /* Footer */
         footer {
             background: var(--dark);
             color: white;
-            padding: 3rem 5%;
+            padding: 4rem 2rem;
         }
 
-        .footer-content {
+        .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 1400px;
-            margin: 0 auto 2rem;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            max-width: 1280px;
+            margin: 0 auto 3rem;
         }
 
-        .footer-section h3 {
-            color: var(--secondary);
+        .footer-grid h4 {
             margin-bottom: 1rem;
         }
 
-        .footer-section ul {
+        .footer-grid ul {
             list-style: none;
         }
 
-        .footer-section ul li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-section a {
-            color: #ccc;
+        .footer-grid a {
+            color: #999;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: color 0.2s;
         }
 
-        .footer-section a:hover {
-            color: var(--secondary);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            background: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.3s;
-        }
-
-        .social-links a:hover {
-            background: var(--secondary);
+        .footer-grid a:hover {
+            color: white;
         }
 
         .footer-bottom {
@@ -697,106 +379,48 @@
             color: #999;
         }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            animation: fadeInUp 0.6s ease;
-        }
-
-        .scroll-animate {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .scroll-animate.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .scroll-slide-left {
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .scroll-slide-left.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .scroll-slide-right {
-            opacity: 0;
-            transform: translateX(50px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .scroll-slide-right.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .mobile-toggle {
-                display: block;
-            }
-
-            .nav-links {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                backdrop-filter: blur(10px);
-                flex-direction: column;
-                padding: 2rem;
-                gap: 1rem;
-                transform: translateX(-100%);
-                transition: transform 0.3s;
-            }
-
-            .nav-links.active {
-                transform: translateX(0);
-            }
-
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-content p {
-                font-size: 1.2rem;
-            }
-
-            .packages-grid,
-            .services-grid,
-            .blog-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .newsletter-form {
-                flex-direction: column;
-            }
-
-            section {
-                padding: 3rem 5%;
-            }
-        }
-
-        /* WhatsApp Float Button */
-        .whatsapp-float {
+        .modal {
+            display: none;
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .modal-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .whatsapp {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
             width: 60px;
             height: 60px;
             background: #25D366;
@@ -804,164 +428,176 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
             color: white;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            font-size: 2rem;
             cursor: pointer;
-            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
             z-index: 999;
         }
 
-        .whatsapp-float:hover {
+        .whatsapp:hover {
             transform: scale(1.1);
-            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+        }
+
+        .page-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .page-content h2 {
+            margin: 2rem 0 1rem;
+        }
+
+        .page-content h3 {
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-container,
+            .grid-3,
+            .form-grid,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <div class="particles"></div>
-        <nav id="navbar">
+    <nav>
         <div class="nav-container">
-            <a href="#home" class="logo">Ja<span class="gold">One</span><span class="black">Connections</span></a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Home</a></li>
+            <a href="#home" class="logo">Ja<span class="logo-accent">One</span></a>
+            <ul class="nav-links">
                 <li><a href="#services">Services</a></li>
                 <li><a href="#packages">Packages</a></li>
-                <li><a href="#booking">Book Now</a></li>
-                <li><a href="#blog">Travel Tips</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about" onclick="showPage('about')">About</a></li>
+                <li><button class="btn-primary" onclick="document.querySelector('#booking').scrollIntoView({behavior:'smooth'})">Book Now</button></li>
             </ul>
-            <button class="mobile-toggle" id="mobileToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-carousel">
-            <div class="hero-slide active"></div>
-            <div class="hero-slide"></div>
-            <div class="hero-slide"></div>
-            <div class="hero-slide"></div>
-        </div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>Discover Authentic Jamaica</h1>
-            <p>Your Gateway to Unforgettable Caribbean Adventures</p>
-            <a href="#booking" class="cta-btn">Start Your Journey</a>
-        </div>
-    </section>
+    <div id="homePage">
+        <section class="hero">
+            <div class="hero-container">
+                <div>
+                    <h1>Experience <span class="hero-gradient">Jamaica</span> Like Never Before</h1>
+                    <p>Authentic travel experiences curated by locals. From pristine beaches to hidden waterfalls, we connect you with the real Jamaica.</p>
+                    <div class="hero-cta">
+                        <button class="btn-primary" onclick="document.querySelector('#booking').scrollIntoView({behavior:'smooth'})">Plan Your Trip</button>
+                        <button class="btn-secondary" onclick="document.querySelector('#packages').scrollIntoView({behavior:'smooth'})">View Packages</button>
+                    </div>
+                </div>
+                <div class="hero-image"></div>
+            </div>
+        </section>
 
-    <!-- Services Section -->
-    <section id="services">
-        <div class="section-header">
-            <h2>Our Premium Services</h2>
-            <p>Everything you need for the perfect Jamaican experience, all in one place</p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card scroll-animate">
-                <div class="service-icon">🗺️</div>
-                <h3>Guided Tours</h3>
-                <p>Experience Jamaica's culture, adventure spots, and stunning coastlines with expert local guides</p>
+        <section id="services">
+            <div class="section-header">
+                <div class="section-label">What We Offer</div>
+                <h2>Comprehensive Travel Services</h2>
+                <p>Everything you need for an unforgettable Jamaican adventure</p>
             </div>
-            <div class="service-card scroll-animate">
-                <div class="service-icon">🚗</div>
-                <h3>Transportation</h3>
-                <p>Reliable airport pickups, luxury shuttles, and private transport services across the island</p>
-            </div>
-            <div class="service-card scroll-animate">
-                <div class="service-icon">🏖️</div>
-                <h3>Accommodations</h3>
-                <p>Curated selection of hotels, villas, and authentic guesthouses for every budget</p>
-            </div>
-            <div class="service-card scroll-animate">
-                <div class="service-icon">💍</div>
-                <h3>Event Management</h3>
-                <p>Weddings, conferences, and festivals planned to perfection in paradise</p>
-            </div>
-            <div class="service-card scroll-animate">
-                <div class="service-icon">✨</div>
-                <h3>Custom Bundles</h3>
-                <p>Personalized all-inclusive packages tailored to your travel dreams</p>
-            </div>
-            <div class="service-card scroll-animate">
-                <div class="service-icon">🌿</div>
-                <h3>Eco-Tourism</h3>
-                <p>Sustainable travel experiences that support local communities and preserve nature</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Packages -->
-    <section id="packages" style="background: var(--light);">
-        <div class="section-header">
-            <h2>Featured Packages</h2>
-            <p>Handpicked experiences that showcase the best of Jamaica</p>
-        </div>
-        <div class="packages-grid">
-            <div class="package-card scroll-slide-left">
-                <div class="package-imga" data-emoji="🏝️"></div>
-                <div class="package-content">
-                    <h3>Island Paradise Escape</h3>
-                    <div class="package-price">$1,299 <span style="font-size: 1rem; color: #999;">/ person</span></div>
-                    <p>5 days of pure Caribbean bliss with accommodation, tours, and transport included</p>
-                    <ul class="package-features">
-                        <li>Luxury beachfront accommodation</li>
-                        <li>Airport transfers included</li>
-                        <li>Dunn's River Falls tour</li>
-                        <li>Sunset catamaran cruise</li>
-                        <li>Daily breakfast & 2 dinners</li>
-                    </ul>
-                    <a href="#booking" class="cta-btn">Book Now</a>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="icon">🗺️</div>
+                    <h3>Guided Tours</h3>
+                    <p>Explore Jamaica with certified local guides who know every hidden gem</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🚗</div>
+                    <h3>Transportation</h3>
+                    <p>Premium airport transfers and island-wide transport</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🏖️</div>
+                    <h3>Accommodations</h3>
+                    <p>Handpicked hotels and villas vetted for quality</p>
+                </div>
+                <div class="card">
+                    <div class="icon">💍</div>
+                    <h3>Event Planning</h3>
+                    <p>Destination weddings and special celebrations</p>
+                </div>
+                <div class="card">
+                    <div class="icon">✨</div>
+                    <h3>Custom Packages</h3>
+                    <p>Tailored itineraries designed around your interests</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🌿</div>
+                    <h3>Eco-Tourism</h3>
+                    <p>Sustainable adventures supporting local communities</p>
                 </div>
             </div>
-            <div class="package-card scroll-animate">
-                <div class="package-imgb" data-emoji="🎉"></div>
-                <div class="package-content">
-                    <h3>Cultural Adventure</h3>
-                    <div class="package-price">$899 <span style="font-size: 1rem; color: #999;">/ person</span></div>
-                    <p>Immerse yourself in authentic Jamaican culture, music, and cuisine</p>
-                    <ul class="package-features">
-                        <li>Bob Marley Museum visit</li>
-                        <li>Local cooking class</li>
-                        <li>Reggae night experience</li>
-                        <li>Craft market tour</li>
-                        <li>Traditional accommodation</li>
-                    </ul>
-                    <a href="#booking" class="cta-btn">Book Now</a>
-                </div>
-            </div>
-            <div class="package-card scroll-slide-right">
-                <div class="package-imgc" data-emoji="🌄"></div>
-                <div class="package-content">
-                    <h3>Thrill Seeker Special</h3>
-                    <div class="package-price">$1,499 <span style="font-size: 1rem; color: #999;">/ person</span></div>
-                    <p>Action-packed adventures for those who love adrenaline and exploration</p>
-                    <ul class="package-features">
-                        <li>Zip-lining through rainforest</li>
-                        <li>ATV mountain tour</li>
-                        <li>Cliff diving excursion</li>
-                        <li>White water rafting</li>
-                        <li>All safety equipment included</li>
-                    </ul>
-                    <a href="#booking" class="cta-btn">Book Now</a>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Booking Section -->
-    <section id="booking">
-        <div class="section-header">
-            <h2>Plan Your Perfect Trip</h2>
-            <p>Let us create a customized experience just for you</p>
-        </div>
-        <div class="booking-container">
-            <form class="booking-form" id="bookingForm" action="/submit" method="POST">
+        <section id="packages" class="packages">
+            <div class="section-header">
+                <div class="section-label">Popular Choices</div>
+                <h2>Featured Travel Packages</h2>
+                <p>Curated experiences that showcase the best of Jamaica</p>
+            </div>
+            <div class="grid-3">
+                <div class="package-card">
+                    <div class="package-image" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600') center/cover;"></div>
+                    <div class="package-content">
+                        <h3>Island Paradise Escape</h3>
+                        <div class="package-price">$1,299 <span>/ person</span></div>
+                        <ul class="features">
+                            <li>Beachfront resort stay</li>
+                            <li>Airport transfers included</li>
+                            <li>Dunn's River Falls tour</li>
+                            <li>Sunset catamaran cruise</li>
+                        </ul>
+                        <button class="btn-primary" style="width:100%" onclick="document.querySelector('#booking').scrollIntoView({behavior:'smooth'})">Book Package</button>
+                    </div>
+                </div>
+                <div class="package-card">
+                    <div class="package-image" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=600') center/cover;"></div>
+                    <div class="package-content">
+                        <h3>Cultural Immersion</h3>
+                        <div class="package-price">$899 <span>/ person</span></div>
+                        <ul class="features">
+                            <li>Bob Marley Museum visit</li>
+                            <li>Traditional cooking class</li>
+                            <li>Reggae night experience</li>
+                            <li>Local craft market tour</li>
+                        </ul>
+                        <button class="btn-primary" style="width:100%" onclick="document.querySelector('#booking').scrollIntoView({behavior:'smooth'})">Book Package</button>
+                    </div>
+                </div>
+                <div class="package-card">
+                    <div class="package-image" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1502472584811-0a2f2feb8968?w=600') center/cover;"></div>
+                    <div class="package-content">
+                        <h3>Thrill Seeker Special</h3>
+                        <div class="package-price">$1,499 <span>/ person</span></div>
+                        <ul class="features">
+                            <li>Rainforest zip-lining</li>
+                            <li>ATV mountain expedition</li>
+                            <li>Cliff diving excursion</li>
+                            <li>White water rafting</li>
+                        </ul>
+                        <button class="btn-primary" style="width:100%" onclick="document.querySelector('#booking').scrollIntoView({behavior:'smooth'})">Book Package</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="booking" class="booking-section">
+            <div class="section-header">
+                <div class="section-label" style="color: var(--secondary);">Get Started</div>
+                <h2>Plan Your Perfect Trip</h2>
+                <p style="color: rgba(255,255,255,0.9);">Tell us about your dream vacation</p>
+            </div>
+            <form class="form-grid" id="bookingForm">
                 <div class="form-group">
                     <label>Full Name *</label>
                     <input type="text" required placeholder="John Smith">
@@ -971,300 +607,185 @@
                     <input type="email" required placeholder="john@example.com">
                 </div>
                 <div class="form-group">
-                    <label>Phone Number *</label>
-                    <input type="tel" required placeholder="+1 234 567 8900">
+                    <label>Phone *</label>
+                    <input type="tel" required placeholder="+1 876 363 0351">
                 </div>
                 <div class="form-group">
-                    <label>Travel Dates *</label>
+                    <label>Travel Date *</label>
                     <input type="date" required>
                 </div>
                 <div class="form-group">
-                    <label>Number of Travelers *</label>
+                    <label>Travelers *</label>
                     <select required>
                         <option value="">Select...</option>
                         <option>1 Person</option>
                         <option>2 People</option>
                         <option>3-5 People</option>
-                        <option>6-9 People</option>
-                        <option>10+ People</option>
+                        <option>6+ People</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Service Interest *</label>
+                    <label>Service *</label>
                     <select required>
                         <option value="">Select...</option>
                         <option>Tours & Excursions</option>
-                        <option>Transportation Only</option>
-                        <option>Accommodation Packages</option>
-                        <option>Event Management</option>
-                        <option>Custom Bundle</option>
-                        <option>All Services</option>
+                        <option>Transportation</option>
+                        <option>Accommodation</option>
+                        <option>Event Planning</option>
+                        <option>Custom Package</option>
                     </select>
                 </div>
-                <div class="form-group" style="grid-column: 1 / -1;">
-                    <label>Special Requests or Questions</label>
-                    <textarea placeholder="Tell us about your dream vacation..."></textarea>
+                <div class="form-group form-full">
+                    <label>Message</label>
+                    <textarea placeholder="Tell us about your ideal Jamaica experience..."></textarea>
                 </div>
-                <button type="submit" class="submit-btn">Get Your Quote</button>
+                <button type="submit" class="btn-primary form-full">Get Your Free Quote</button>
             </form>
-        </div>
-    </section>
+        </section>
+    </div>
 
-    <!-- Blog Section -->
-    <section id="blog" style="background: var(--light);">
-        <div class="section-header">
-            <h2>Travel Tips & Insights</h2>
-            <p>Discover insider knowledge to make the most of your Jamaican adventure</p>
+    <div id="aboutPage" style="display:none">
+        <div class="page-content">
+            <h1>About Ja One Connections</h1>
+            <p style="font-size: 1.25rem; color: var(--gray-600); margin: 1rem 0 2rem;">Your trusted partner for authentic Jamaican travel experiences</p>
+            
+            <h2>Who We Are</h2>
+            <p>Founded in 2010 by native Jamaicans passionate about sharing their island's beauty, Ja One Connections has grown into one of Jamaica's most trusted travel services.</p>
+            
+            <h2>Our Mission</h2>
+            <p>To provide exceptional, personalized travel experiences that connect visitors with Jamaica's rich culture, stunning landscapes, and warm hospitality.</p>
+            
+            <h3>Why Choose Us</h3>
+            <ul>
+                <li>Local Expertise - Born and raised in Jamaica</li>
+                <li>Licensed & Insured by Jamaica Tourist Board</li>
+                <li>24/7 Customer Support</li>
+                <li>Transparent Pricing - No hidden fees</li>
+                <li>Sustainable Tourism Practices</li>
+            </ul>
+            
+            <button class="btn-primary" onclick="showPage('home')" style="margin-top: 2rem;">Back to Home</button>
         </div>
-        <div class="blog-grid">
-            <div class="blog-card scroll-animate">
-                <div class="blog-imga" data-emoji="📸"></div>
-                <div class="blog-content">
-                    <div class="blog-meta">October 1, 2025 • Travel Guide</div>
-                    <h3>10 Hidden Gems in Jamaica You Must Visit</h3>
-                    <p>Explore lesser-known treasures beyond the typical tourist spots for an authentic experience...</p>
-                    <a href="#" class="read-more">Read More →</a>
-                </div>
-            </div>
-            <div class="blog-card scroll-animate">
-                <div class="blog-imgb" data-emoji="🍽️"></div>
-                <div class="blog-content">
-                    <div class="blog-meta">September 28, 2025 • Food & Culture</div>
-                    <h3>The Ultimate Guide to Jamaican Cuisine</h3>
-                    <p>From jerk chicken to ackee and saltfish, discover the flavors that define Jamaica...</p>
-                    <a href="#" class="read-more">Read More →</a>
-                </div>
-            </div>
-            <div class="blog-card scroll-animate">
-                <div class="blog-imgc" data-emoji="🌊"></div>
-                <div class="blog-content">
-                    <div class="blog-meta">September 25, 2025 • Adventure</div>
-                    <h3>Best Beaches for Every Type of Traveler</h3>
-                    <p>Whether you seek calm waters or surfing waves, find your perfect beach paradise...</p>
-                    <a href="#" class="read-more">Read More →</a>
-                </div>
-            </div>
+    </div>
+
+    <div id="privacyPage" style="display:none">
+        <div class="page-content">
+            <h1>Privacy Policy</h1>
+            <p style="color: var(--gray-600); margin-bottom: 2rem;">Last updated: October 15, 2025</p>
+            
+            <h2>Information We Collect</h2>
+            <p>We collect information you provide when booking, subscribing, or contacting us including name, email, phone, and travel preferences.</p>
+            
+            <h2>How We Use Your Information</h2>
+            <p>We use your information to process bookings, communicate about travel plans, send confirmations, and improve our services.</p>
+            
+            <h2>Information Sharing</h2>
+            <p>We do not sell your personal information. We share data only with service providers (hotels, tour operators) necessary to deliver our services.</p>
+            
+            <h2>Your Rights</h2>
+            <p>You have the right to access, correct, or delete your personal information. Contact us at privacy@jaoneconnections.com</p>
+            
+            <button class="btn-primary" onclick="showPage('home')" style="margin-top: 2rem;">Back to Home</button>
         </div>
-    </section>
+    </div>
 
-    <!-- Newsletter -->
-    <section class="newsletter">
-        <h2 style="color: var(--primary); margin-bottom: 1rem;">Stay Connected</h2>
-        <p>Subscribe for exclusive deals, travel tips, and Caribbean inspiration</p>
-        <form class="newsletter-form" id="newsletterForm">
-            <input type="email" placeholder="Enter your email address" required>
-            <button type="submit">Subscribe</button>
-        </form>
-    </section>
+    <div id="termsPage" style="display:none">
+        <div class="page-content">
+            <h1>Terms of Service</h1>
+            <p style="color: var(--gray-600); margin-bottom: 2rem;">Last updated: October 15, 2025</p>
+            
+            <h2>Booking and Payment</h2>
+            <p>30% deposit required to confirm booking. Full payment due 30 days before travel.</p>
+            
+            <h2>Cancellation Policy</h2>
+            <ul>
+                <li>30+ days before travel: Full refund minus 10% fee</li>
+                <li>15-29 days: 50% refund</li>
+                <li>14 days or less: No refund</li>
+            </ul>
+            
+            <h2>Liability</h2>
+            <p>While we ensure safety, Ja One Connections is not liable for acts of God, weather events, or third-party service failures.</p>
+            
+            <h2>Travel Insurance</h2>
+            <p>We strongly recommend comprehensive travel insurance for all bookings.</p>
+            
+            <p>Contact: info@jaoneconnections.com | +1 (876) 363-0351</p>
+            
+            <button class="btn-primary" onclick="showPage('home')" style="margin-top: 2rem;">Back to Home</button>
+        </div>
+    </div>
 
-    <!-- Contact & Footer -->
-    <footer id="contact">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Ja One Connections</h3>
-                <p>Your trusted partner for authentic Jamaican experiences since 2025.</p>
-                <div class="social-links">
-                    <a href="#" title="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" title="Twitter">
-                       <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" title="TikTok">
-                        <i class="fab fa-tiktok"></i>
-                    </a>
-                </div>
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h4>Ja<span style="color: var(--primary);">One</span></h4>
+                <p style="color: #999; margin: 1rem 0;">Your trusted partner for authentic Jamaican travel experiences.</p>
             </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
+            <div>
+                <h4>Services</h4>
                 <ul>
-                    <li><a href="#services">Our Services</a></li>
-                    <li><a href="#packages">Travel Packages</a></li>
-                    <li><a href="#booking">Book Now</a></li>
-                    <li><a href="#blog">Travel Blog</a></li>
-                    <li><a href="#">About Us</a></li>
+                    <li><a href="#services">Guided Tours</a></li>
+                    <li><a href="#services">Transportation</a></li>
+                    <li><a href="#packages">Packages</a></li>
                 </ul>
             </div>
-            <div class="footer-section">
-                <h3>Services</h3>
+            <div>
+                <h4>Company</h4>
                 <ul>
-                    <li><a href="#booking">Guided Tours</a></li>
-                    <li><a href="#booking">Transportation</a></li>
-                    <li><a href="#booking">Accommodations</a></li>
-                    <li><a href="#booking">Event Planning</a></li>
-                    <li><a href="#booking">Custom Packages</a></li>
+                    <li><a href="#" onclick="showPage('about')">About Us</a></li>
+                    <li><a href="#booking">Contact</a></li>
+                    <li><a href="#" onclick="showPage('privacy')">Privacy</a></li>
+                    <li><a href="#" onclick="showPage('terms')">Terms</a></li>
                 </ul>
             </div>
-            <div class="footer-section">
-                <h3>Contact Us</h3>
+            <div>
+                <h4>Contact</h4>
                 <ul>
-                    <li><a href="mailto:jaonesconnection@gmail.com">📧 jaonesconnections@gmail.com</a></li>
-                    <li><a href="tel:+1876363-0351">📱 +1 (876) 363-0351</a></li>
-                    <li>📍 Montego Bay, Saint James Parish, JM</li>
-                    <li>🕐 Mon-Sat: 8AM - 8PM EST</li>
+                    <li><a href="mailto:info@jaoneconnections.com">info@jaoneconnections.com</a></li>
+                    <li><a href="tel:+18763630351">+1 (876) 363-0351</a></li>
+                    <li>Montego Bay, Jamaica</li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Ja One Connections Ltd. All rights reserved. | <a href="#" style="color: var(--secondary);">Privacy Policy</a> | <a href="#" style="color: var(--secondary);">Terms of Service</a></p>
+            <p>&copy; 2025 Ja One Connections Ltd. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- WhatsApp Float Button -->
-    <div class="whatsapp-float" title="Chat with us on WhatsApp">
+    <div class="whatsapp" onclick="window.open('https://wa.me/18763630351?text=Hello! I\'m interested in planning a trip to Jamaica.', '_blank')">
         <i class="fab fa-whatsapp"></i>
     </div>
-    
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-icon">✓</div>
+            <h3>Request Received!</h3>
+            <p>Our team will contact you within 24 hours.</p>
+            <button class="btn-primary" onclick="document.getElementById('modal').classList.remove('active')">Close</button>
+        </div>
+    </div>
+
     <script>
-        // Mobile Navigation Toggle
-        const mobileToggle = document.getElementById('mobileToggle');
-        const navLinks = document.getElementById('navLinks');
-        
-        mobileToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            mobileToggle.classList.toggle('active');
-            
-            if (navLinks.classList.contains('active')) {
-                const links = navLinks.querySelectorAll('li');
-                links.forEach((link, index) => {
-                    link.style.opacity = '0';
-                    link.style.transform = 'translateY(-20px)';
-                    setTimeout(() => {
-                        link.style.opacity = '1';
-                        link.style.transform = 'translateY(0)';
-                    }, index * 100);
-                });
-            }
-        });
-
-        // Close mobile menu when link is clicked
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                mobileToggle.classList.remove('active');
-            });
-        });
-
-        // Hero Carousel
-        const slides = document.querySelectorAll('.hero-slide');
-        let currentSlide = 0;
-        let carouselInterval;
-
-        function showSlide(index) {
-            slides.forEach(slide => slide.classList.remove('active'));
-            slides[index].classList.add('active');
-            currentSlide = index;
+        function showPage(page) {
+            document.getElementById('homePage').style.display = page === 'home' ? 'block' : 'none';
+            document.getElementById('aboutPage').style.display = page === 'about' ? 'block' : 'none';
+            document.getElementById('privacyPage').style.display = page === 'privacy' ? 'block' : 'none';
+            document.getElementById('termsPage').style.display = page === 'terms' ? 'block' : 'none';
+            window.scrollTo(0, 0);
         }
 
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
-        }
-
-        function startCarousel() {
-            carouselInterval = setInterval(nextSlide, 5000);
-        }
-
-        startCarousel();
-        
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const scrollObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.classList.add('visible');
-                    }, index * 100);
-                    scrollObserver.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        // Observe all animated elements
-        document.querySelectorAll('.scroll-animate, .scroll-slide-left, .scroll-slide-right').forEach(el => {
-            scrollObserver.observe(el);
-        });
-
-        // Form submissions
-        document.getElementById('bookingForm').addEventListener('submit', (e) => {
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Thank you for your booking request! We will contact you within 24 hours to confirm your personalized Jamaica experience.');
-            e.target.reset();
+            document.getElementById('modal').classList.add('active');
+            this.reset();
         });
 
-        document.getElementById('newsletterForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Success! You\'re now subscribed to exclusive Caribbean travel deals and inspiration.');
-            e.target.reset();
-        });
-
-        // WhatsApp button functionality
-        document.querySelector('.whatsapp-float').addEventListener('click', () => {
-            window.open('https://wa.me/18763630351?text=Hello! I\'m interested in planning a trip to Jamaica.', '_blank');
-        });
-
-        // Package card click to booking
-        document.querySelectorAll('.package-card .cta-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const packageName = e.target.closest('.package-card').querySelector('h3').textContent;
-                document.querySelector('#booking').scrollIntoView({ behavior: 'smooth' });
-                
-                setTimeout(() => {
-                    const serviceSelect = document.querySelector('#booking select[required]:last-of-type');
-                    if (serviceSelect) {
-                        serviceSelect.value = 'Custom Bundle';
-                    }
-                }, 800);
-            });
-        });
-
-        // Parallax effect for hero
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const heroContent = document.querySelector('.hero-content');
-            if (heroContent && scrolled < window.innerHeight) {
-                heroContent.style.transform = `translateY(${scrolled * 0.5}px)`;
-                heroContent.style.opacity = 1 - (scrolled / window.innerHeight);
-            }
-        });
-
-        // Add loading animation
-        window.addEventListener('load', () => {
-            document.body.style.opacity = '0';
-            document.body.style.transition = 'opacity 0.5s ease';
-            setTimeout(() => {
-                document.body.style.opacity = '1';
-            }, 100);
-        });
+        // Set min date to today
+        const dateInput = document.querySelector('input[type="date"]');
+        if (dateInput) {
+            dateInput.min = new Date().toISOString().split('T')[0];
+        }
     </script>
 </body>
-</html>
+                                                    </html>
